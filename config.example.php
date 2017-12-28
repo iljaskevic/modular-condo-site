@@ -6,6 +6,6 @@ return [
     'siteEntryId' => '',
     'userPageEntryId' => ''
   ],
-  'oFormsApiKey' => ''
+  'oFormsApiKey' => '',
 ];
 ?>
