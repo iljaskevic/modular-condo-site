@@ -1,0 +1,7 @@
+{
+    "require": {
+        "contentful/contentful": "^2.3",
+        "slim/slim": "^3.9",
+        "erusev/parsedown": "^1.6"
+    }
+}
