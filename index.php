@@ -41,6 +41,7 @@ $thumbnailOptions->setFormat('jpg')->setHeight(250);
     <script src="https://www.google.com/recaptcha/api.js" async defer></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.0.7/js/swiper.min.js" async defer></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="https://oformsapi.azurewebsites.net/js/v1/oforms.js"></script>
 
     <!-- Daterangepicker Include Required Prerequisites -->
     <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
@@ -65,7 +66,7 @@ $thumbnailOptions->setFormat('jpg')->setHeight(250);
       <?php
         echo
           '<script>
-            var emailApiKey = "' . $entry->getEmailApiKey() . '";
+            var emailApiKey = "' . $config['oFormsApiKey'] . '";
           </script>';
 
         if ($entry->getLogoTextColour()) {
@@ -434,7 +435,11 @@ $thumbnailOptions->setFormat('jpg')->setHeight(250);
                     <input id="daterange" type="text" id="daterange" name="daterange" class="form-control"  placeholder="Click to Select Start/End Dates"/>
                   </div>
                   <div class="form-group col-sm-6 available-from-date">
-                    Available from <strong><?php echo $entry->getAvailableFromDate()->format('F d, Y') ?></strong>
+                    <?php
+                      if ($entry->getAvailableFromDate()) {
+                        echo 'Available from <strong>' . $entry->getAvailableFromDate()->format('F d, Y') . '</strong>';
+                      }
+                    ?>
                   </div>
                   <div class="form-group col-lg-12">
                     <label for="message">Message</label>

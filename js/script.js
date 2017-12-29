@@ -3,7 +3,6 @@ $(function() {
 	var markersShown = false;
 	$(".show-parking-btn").find(".glyphicon-ok").hide();
 	$(".map-legend").hide();
-	//$('.contact-us-form input[name="daterange"]').daterangepicker();
 	$("#lightgallery").lightGallery({
 		thumbnail: true
 	});
@@ -11,10 +10,6 @@ $(function() {
 		rowHeight : 200,
 		lastRow : 'hide'
 	});
-	/*$('.contact-us-form input[name="daterange"]').flatpickr({
-		mode: 'range',
-		minDate: 'today'
-	});*/
 	var mySwiper = new Swiper ('.swiper-container', {
     // Optional parameters
     // direction: 'vertical',
@@ -384,54 +379,24 @@ $(function() {
 			}, 500);
 		}
 	});
-/*
-	$(".pop").on("click", function() {
-		var imgSrc = $(this).find('#imageresource').attr('src');
-
-		var src = imgSrc.replace("thumbs","pics");
-		$('#imagepreview').attr('src', src);
-		$('#imagemodal').modal('show');
-	});
-*/
-	$("#contact-us-form").submit(function(e) {
-		e.preventDefault();
-		var form = $($("#contact-us-form"));
-		var data = { name: "", email: "", phone: "", cell: "", daterange: "", message: "", grecaptcharesponse: ""};
-		data.name = $("#contact-us-form input[name=name]").val();
-		data.email = $("#contact-us-form input[name=email]").val();
-		data.phone = $("#contact-us-form input[name=phone]").val();
-		data.cell = $("#contact-us-form input[name=cell]").val();
-		data.daterange = $("#contact-us-form input[name=daterange]").val();
-		data.message = $("#contact-us-form textarea[name=message]").val();
-		//data.grecaptcharesponse = grecaptcha.getResponse();
-
-		$.ajax({
-			type: "POST",
-			//url: "api/submit",
-			url: "https://oformsapi.azurewebsites.net/api/v1/form",
-			headers: { 'api-key': emailApiKey },
-			data: JSON.stringify(data), // serializes the form's elements.
-			contentType: "application/json; charset=utf-8",
-			//dataType: "json", //.ajax calls error if response is blank 200 OK, since that is not a proper JSON format
-			success: function(data) {
-
-				$("#contact-us-success").text("Thank you for contacting us! We will respond as soon as possible.");
-				$("#contact-us-success").removeClass("hidden");
-				$("#contact-us-error").addClass("hidden");
-				$('html, body').animate({
-					scrollTop: $("#contact-us-success").offset().top - 100
-				}, 500);
-			},
-			error: function(error) {
-				$("#contact-us-error").text("Oop! Something went wrong.");
-				$("#contact-us-error").removeClass("hidden");
-				$("#contact-us-success").addClass("hidden");
-				$('html, body').animate({
-					scrollTop: $("#contact-us-error").offset().top - 100
-				}, 500);
-			}
-		});
-
-		return false; // avoid to execute the actual submit of the form.
+	function success(data) {
+		$("#contact-us-success").text("Thank you for contacting us! We will respond as soon as possible.");
+		$("#contact-us-success").removeClass("hidden");
+		$("#contact-us-error").addClass("hidden");
+		$('html, body').animate({
+			scrollTop: $("#contact-us-success").offset().top - 100
+		}, 500);
+	}
+	function error(error) {
+		$("#contact-us-error").text("Oop! Something went wrong.");
+		$("#contact-us-error").removeClass("hidden");
+		$("#contact-us-success").addClass("hidden");
+		$('html, body').animate({
+			scrollTop: $("#contact-us-error").offset().top - 100
+		}, 500);
+	}
+	var oforms = new oForm("contact-us-form", "d0db0c51-2a11-41cd-b6c5-e5e2a6b03618",{
+		success: success,
+		error: error
 	});
 });
