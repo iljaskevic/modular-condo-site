@@ -67,7 +67,7 @@ TEST TEST TEST
       <?php
         echo
           '<script>
-            var emailApiKey = "' . $config['oFormsApiKey'] . '";
+            var emailApiKey = "' . $entry->getEmailApiKey() . '";
           </script>';
 
         if ($entry->getLogoTextColour()) {
