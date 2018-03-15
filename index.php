@@ -66,7 +66,7 @@ $thumbnailOptions->setFormat('jpg')->setHeight(250);
       <?php
         echo
           '<script>
-            var emailApiKey = "' . $config['oFormsApiKey'] . '";
+            var emailApiKey = "' . $entry->getEmailApiKey() . '";
           </script>';
 
         if ($entry->getLogoTextColour()) {
