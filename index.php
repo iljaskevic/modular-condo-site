@@ -1,6 +1,18 @@
 <?php
 require_once 'vendor/autoload.php';
-$config = require_once('config.php');
+if(file_exists('config.php')) {
+  $config = require_once('config.php');
+} else {
+  $config = [
+    'contentful' => [
+      'accessKey' => getenv("CONTENTFUL_ACCESS_KEY"),
+      'spaceId' => getenv("CONTENTFUL_SPACE_ID"),
+      'siteEntryId' => getenv("CONTENTFUL_SITE_ENTRY_ID"),
+      'userPageEntryId' => getenv("CONTENTFUL_USER_PAGE_ENTRY_ID")
+    ],
+    'oFormsApiKey' => getenv("OFORMS_API_KEY"),
+  ];
+}
 $contentfulConfig = $config['contentful'];
 
 $client = new \Contentful\Delivery\Client($contentfulConfig['accessKey'], $contentfulConfig['spaceId']);
