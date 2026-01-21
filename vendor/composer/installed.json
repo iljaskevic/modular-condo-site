@@ -37,7 +37,7 @@
                                 "bin/contentful"
                         ],
                         "type": "library",
-                        "installation-source": "source",
+                        "installation-source": "dist",
                         "autoload": {
                                 "psr-4": {
                                         "Contentful\\Delivery\\": "src/"
@@ -88,7 +88,7 @@
                         },
                         "time": "2024-05-14T23:43:58+00:00",
                         "type": "library",
-                        "installation-source": "source",
+                        "installation-source": "dist",
                         "autoload": {
                                 "psr-4": {
                                         "Contentful\\Core\\": "src"
@@ -139,7 +139,7 @@
                         },
                         "time": "2025-11-18T01:08:31+00:00",
                         "type": "library",
-                        "installation-source": "source",
+                        "installation-source": "dist",
                         "autoload": {
                                 "psr-4": {
                                         "Contentful\\RichText\\": "src/"
@@ -237,7 +237,7 @@
                                         "dev-master": "1.1.x-dev"
                                 }
                         },
-                        "installation-source": "source",
+                        "installation-source": "dist",
                         "autoload": {
                                 "psr-4": {
                                         "Fig\\Http\\Message\\": "src/"
@@ -315,7 +315,7 @@
                                         "forward-command": false
                                 }
                         },
-                        "installation-source": "source",
+                        "installation-source": "dist",
                         "autoload": {
                                 "files": [
                                         "src/functions_include.php"
@@ -427,7 +427,7 @@
                                         "forward-command": false
                                 }
                         },
-                        "installation-source": "source",
+                        "installation-source": "dist",
                         "autoload": {
                                 "psr-4": {
                                         "GuzzleHttp\\Promise\\": "src/"
@@ -524,7 +524,7 @@
                                         "forward-command": false
                                 }
                         },
-                        "installation-source": "source",
+                        "installation-source": "dist",
                         "autoload": {
                                 "psr-4": {
                                         "GuzzleHttp\\Psr7\\": "src/"
@@ -636,7 +636,7 @@
                                         "dev-master": "1.x-dev"
                                 }
                         },
-                        "installation-source": "source",
+                        "installation-source": "dist",
                         "autoload": {
                                 "psr-4": {
                                         "Jean85\\": "src/"
@@ -752,7 +752,7 @@
                         },
                         "time": "2018-02-13T20:26:39+00:00",
                         "type": "library",
-                        "installation-source": "source",
+                        "installation-source": "dist",
                         "autoload": {
                                 "files": [
                                         "src/functions.php"
@@ -941,7 +941,7 @@
                                         "dev-master": "1.0.x-dev"
                                 }
                         },
-                        "installation-source": "source",
+                        "installation-source": "dist",
                         "autoload": {
                                 "psr-4": {
                                         "Psr\\Cache\\": "src/"
@@ -993,7 +993,7 @@
                                         "dev-master": "2.0.x-dev"
                                 }
                         },
-                        "installation-source": "source",
+                        "installation-source": "dist",
                         "autoload": {
                                 "psr-4": {
                                         "Psr\\Container\\": "src/"
@@ -1050,7 +1050,7 @@
                                         "dev-master": "1.0.x-dev"
                                 }
                         },
-                        "installation-source": "source",
+                        "installation-source": "dist",
                         "autoload": {
                                 "psr-4": {
                                         "Psr\\Http\\Client\\": "src/"
@@ -1105,7 +1105,7 @@
                                         "dev-master": "1.0.x-dev"
                                 }
                         },
-                        "installation-source": "source",
+                        "installation-source": "dist",
                         "autoload": {
                                 "psr-4": {
                                         "Psr\\Http\\Message\\": "src/"
@@ -1162,7 +1162,7 @@
                                         "dev-master": "2.0.x-dev"
                                 }
                         },
-                        "installation-source": "source",
+                        "installation-source": "dist",
                         "autoload": {
                                 "psr-4": {
                                         "Psr\\Http\\Message\\": "src/"
@@ -1219,7 +1219,7 @@
                                         "dev-master": "1.0.x-dev"
                                 }
                         },
-                        "installation-source": "source",
+                        "installation-source": "dist",
                         "autoload": {
                                 "psr-4": {
                                         "Psr\\Http\\Server\\": "src/"
@@ -1279,7 +1279,7 @@
                                         "dev-master": "1.0.x-dev"
                                 }
                         },
-                        "installation-source": "source",
+                        "installation-source": "dist",
                         "autoload": {
                                 "psr-4": {
                                         "Psr\\Http\\Server\\": "src/"
@@ -1337,7 +1337,7 @@
                                         "dev-master": "3.x-dev"
                                 }
                         },
-                        "installation-source": "source",
+                        "installation-source": "dist",
                         "autoload": {
                                 "psr-4": {
                                         "Psr\\Log\\": "src"
@@ -1389,7 +1389,7 @@
                         },
                         "time": "2019-03-08T08:55:37+00:00",
                         "type": "library",
-                        "installation-source": "source",
+                        "installation-source": "dist",
                         "autoload": {
                                 "files": [
                                         "src/getallheaders.php"
@@ -1449,7 +1449,7 @@
                         },
                         "time": "2025-11-02T17:51:19+00:00",
                         "type": "library",
-                        "installation-source": "source",
+                        "installation-source": "dist",
                         "autoload": {
                                 "psr-4": {
                                         "Slim\\Psr7\\": "src"
@@ -1546,7 +1546,7 @@
                         },
                         "time": "2025-11-21T12:23:44+00:00",
                         "type": "library",
-                        "installation-source": "source",
+                        "installation-source": "dist",
                         "autoload": {
                                 "psr-4": {
                                         "Slim\\": "Slim"
