@@ -185,6 +185,19 @@ $thumbnailOptions->setFormat('jpg')->setHeight(250);
             })(window, document, "clarity", "script", "' . $entry->getMicrosoftClarityKey() . '");
         </script>';
       }
+
+      if ($entry->getGoogleAnalyticsKey()) {
+        echo
+        '<!-- Google tag (gtag.js) -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-F96VDTS6EB"></script>
+        <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag("js", new Date());
+        
+          gtag("config", "' . $entry->getGoogleAnalyticsKey() . '");
+        </script>';
+      }
     ?>
   </head>
   <body>
