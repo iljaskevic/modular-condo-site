@@ -19,5 +19,6 @@ jobs:
       uses: SamKirkland/FTP-Deploy-Action@v4.3.6
       with:
         server: ftp.condoinhotel.com
+        port: 21
         username: testuser@test.ljaskevic.com
         password: ${{ secrets.ftp_password }}
