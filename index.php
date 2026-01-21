@@ -183,12 +183,14 @@ $thumbnailOptions->setFormat('jpg')->setHeight(250);
                 t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
                 y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
             })(window, document, "clarity", "script", "' . $entry->getMicrosoftClarityKey() . '");
-        </script>';
+        </script>
+        ';
       }
 
       if ($entry->getGoogleAnalyticsKey()) {
         echo
-        '<!-- Google tag (gtag.js) -->
+        '
+        <!-- Google tag (gtag.js) -->
         <script async src="https://www.googletagmanager.com/gtag/js?id=G-F96VDTS6EB"></script>
         <script>
           window.dataLayer = window.dataLayer || [];
