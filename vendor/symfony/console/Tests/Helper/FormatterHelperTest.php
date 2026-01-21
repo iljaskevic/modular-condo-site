@@ -40,7 +40,7 @@ class FormatterHelperTest extends TestCase
         $this->assertEquals(
             '<error> Some text to display </error>'."\n".
             '<error> foo bar              </error>',
-            $formatter->formatBlock(array('Some text to display', 'foo bar'), 'error'),
+            $formatter->formatBlock(['Some text to display', 'foo bar'], 'error'),
             '::formatBlock() formats a message in a block'
         );
 
@@ -83,9 +83,9 @@ class FormatterHelperTest extends TestCase
         $formatter = new FormatterHelper();
 
         $this->assertEquals(
-            '<error>                            </error>'."\n".
-            '<error>  \<info>some info\</info>  </error>'."\n".
-            '<error>                            </error>',
+            '<error>                              </error>'."\n".
+            '<error>  \<info\>some info\</info\>  </error>'."\n".
+            '<error>                              </error>',
             $formatter->formatBlock('<info>some info</info>', 'error', true),
             '::formatBlock() escapes \'<\' chars'
         );

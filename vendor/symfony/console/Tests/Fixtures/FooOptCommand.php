@@ -10,27 +10,29 @@ class FooOptCommand extends Command
     public $input;
     public $output;
 
-    protected function configure()
+    protected function configure(): void
     {
         $this
             ->setName('foo:bar')
             ->setDescription('The foo:bar command')
-            ->setAliases(array('afoobar'))
+            ->setAliases(['afoobar'])
             ->addOption('fooopt', 'fo', InputOption::VALUE_OPTIONAL, 'fooopt description')
         ;
     }
 
-    protected function interact(InputInterface $input, OutputInterface $output)
+    protected function interact(InputInterface $input, OutputInterface $output): void
     {
         $output->writeln('interact called');
     }
 
-    protected function execute(InputInterface $input, OutputInterface $output)
+    protected function execute(InputInterface $input, OutputInterface $output): int
     {
         $this->input = $input;
         $this->output = $output;
 
         $output->writeln('called');
         $output->writeln($this->input->getOption('fooopt'));
+
+        return 0;
     }
 }

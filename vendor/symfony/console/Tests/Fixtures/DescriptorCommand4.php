@@ -15,11 +15,11 @@ use Symfony\Component\Console\Command\Command;
 
 class DescriptorCommand4 extends Command
 {
-    protected function configure()
+    protected function configure(): void
     {
         $this
             ->setName('descriptor:command4')
-            ->setAliases(array('descriptor:alias_command4', 'command4:descriptor'))
+            ->setAliases(['descriptor:alias_command4', 'command4:descriptor'])
         ;
     }
 }

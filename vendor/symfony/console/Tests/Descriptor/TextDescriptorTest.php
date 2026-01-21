@@ -16,21 +16,21 @@ use Symfony\Component\Console\Tests\Fixtures\DescriptorApplication2;
 use Symfony\Component\Console\Tests\Fixtures\DescriptorApplicationMbString;
 use Symfony\Component\Console\Tests\Fixtures\DescriptorCommandMbString;
 
-class TextDescriptorTest extends AbstractDescriptorTest
+class TextDescriptorTest extends AbstractDescriptorTestCase
 {
-    public function getDescribeCommandTestData()
+    public static function getDescribeCommandTestData()
     {
-        return $this->getDescriptionTestData(array_merge(
+        return self::getDescriptionTestData(array_merge(
             ObjectsProvider::getCommands(),
-            array('command_mbstring' => new DescriptorCommandMbString())
+            ['command_mbstring' => new DescriptorCommandMbString()]
         ));
     }
 
-    public function getDescribeApplicationTestData()
+    public static function getDescribeApplicationTestData()
     {
-        return $this->getDescriptionTestData(array_merge(
+        return self::getDescriptionTestData(array_merge(
             ObjectsProvider::getApplications(),
-            array('application_mbstring' => new DescriptorApplicationMbString())
+            ['application_mbstring' => new DescriptorApplicationMbString()]
         ));
     }
 
@@ -38,7 +38,7 @@ class TextDescriptorTest extends AbstractDescriptorTest
     {
         $application = new DescriptorApplication2();
 
-        $this->assertDescription(file_get_contents(__DIR__.'/../Fixtures/application_filtered_namespace.txt'), $application, array('namespace' => 'command4'));
+        $this->assertDescription(file_get_contents(__DIR__.'/../Fixtures/application_filtered_namespace.txt'), $application, ['namespace' => 'command4']);
     }
 
     protected function getDescriptor()
@@ -46,7 +46,7 @@ class TextDescriptorTest extends AbstractDescriptorTest
         return new TextDescriptor();
     }
 
-    protected function getFormat()
+    protected static function getFormat()
     {
         return 'txt';
     }
