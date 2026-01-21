@@ -2,7 +2,6 @@
     "require": {
         "contentful/contentful": "^7.1",
         "slim/slim": "^4.15",
-        "erusev/parsedown": "^1.7",
         "slim/psr7": "^1.8",
         "symfony/cache": "*",
         "fig/http-message-util": "^1.1",
