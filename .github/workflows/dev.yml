@@ -1,0 +1,24 @@
+on:
+  push:
+    branches:
+      - dev
+name: 🚀 Deploy website on push
+jobs:
+  web-deploy-to-test:
+    name: 🎉 Deploy Dev Branch to Test
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/dev'
+    
+    steps:
+    - name: 🚚 Get latest code
+      uses: actions/checkout@v4
+      with:
+        ref: dev # Specify the branch name here
+    
+    - name: 📂 Sync files
+      uses: SamKirkland/FTP-Deploy-Action@v4.3.6
+      with:
+        server: ftp.condoinhotel.com
+        port: 21
+        username: github-actions@test.ljaskevic.com
+        password: ${{ secrets.ftp_password_dev }}
