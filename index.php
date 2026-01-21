@@ -191,7 +191,7 @@ $thumbnailOptions->setFormat('jpg')->setHeight(250);
         echo
         '
         <!-- Google tag (gtag.js) -->
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-F96VDTS6EB"></script>
+        <script async src="https://www.googletagmanager.com/gtag/js?id=' . $entry->getGoogleAnalyticsKey() . '"></script>
         <script>
           window.dataLayer = window.dataLayer || [];
           function gtag(){dataLayer.push(arguments);}
