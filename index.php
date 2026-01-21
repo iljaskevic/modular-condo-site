@@ -23,13 +23,13 @@ $converter = new CommonMarkConverter();
 $siteId = $contentfulConfig['siteEntryId'];
 $entry = $client->getEntry($siteId);
 
-$headerImageOptions = new \Contentful\File\ImageOptions;
+$headerImageOptions = new \Contentful\Core\File\ImageOptions;
 $headerImageOptions->setFormat('jpg')->setHeight(1200);
 
-$imageOptions = new \Contentful\File\ImageOptions;
+$imageOptions = new \Contentful\Core\File\ImageOptions;
 $imageOptions->setFormat('jpg')->setHeight(1000);
 
-$thumbnailOptions = new \Contentful\File\ImageOptions;
+$thumbnailOptions = new \Contentful\Core\File\ImageOptions;
 $thumbnailOptions->setFormat('jpg')->setHeight(250);
 
 ?>
