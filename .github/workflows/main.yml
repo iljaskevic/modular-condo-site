@@ -9,6 +9,7 @@ jobs:
     name: 🎉 Deploy Dev Branch to Test
     runs-on: ubuntu-latest
     if: github.ref == 'refs/heads/dev'
+    
     steps:
     - name: 🚚 Get latest code
       uses: actions/checkout@v4
