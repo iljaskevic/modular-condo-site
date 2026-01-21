@@ -5,7 +5,7 @@ on:
       - dev
 name: 🚀 Deploy website on push
 jobs:
-  web-deploy:
+  web-deploy-to-test:
     name: 🎉 Deploy Dev Branch to Test
     runs-on: ubuntu-latest
     if: github.ref == 'refs/heads/dev'
@@ -21,5 +21,100 @@ jobs:
       with:
         server: ftp.condoinhotel.com
         port: 21
-        username: testuser@test.ljaskevic.com
-        password: ${{ secrets.ftp_password }}
+        username: github-actions@test.ljaskevic.com
+        password: ${{ secrets.ftp_password_dev }}
+
+  web-deploy-condoinhotel:
+    name: 🎉 Deploy to CondoInHotel.com
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/master'
+    
+    steps:
+    - name: 🚚 Get latest code
+      uses: actions/checkout@v4
+      with:
+        ref: dev # Specify the branch name here
+    
+    - name: 📂 Sync files
+      uses: SamKirkland/FTP-Deploy-Action@v4.3.6
+      with:
+        server: ftp.condoinhotel.com
+        port: 21
+        username: github-actions@condoinhotel.com
+        password: ${{ secrets.ftp_password_condoinhotel }}
+
+  web-deploy-condoaccommodation:
+    name: 🎉 Deploy to CondoAccommodation
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/master'
+    
+    steps:
+    - name: 🚚 Get latest code
+      uses: actions/checkout@v4
+      with:
+        ref: dev # Specify the branch name here
+    
+    - name: 📂 Sync files
+      uses: SamKirkland/FTP-Deploy-Action@v4.3.6
+      with:
+        server: ftp.condoinhotel.com
+        port: 21
+        username: github-actions@condoaccommodation.com
+        password: ${{ secrets.ftp_password_condoaccommodation }}
+
+  web-deploy-condohoteltoronto:
+    name: 🎉 Deploy to CondoHotelToronto
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/master'
+    
+    steps:
+    - name: 🚚 Get latest code
+      uses: actions/checkout@v4
+      with:
+        ref: dev # Specify the branch name here
+    
+    - name: 📂 Sync files
+      uses: SamKirkland/FTP-Deploy-Action@v4.3.6
+      with:
+        server: ftp.condoinhotel.com
+        port: 21
+        username: github-actions@condohoteltoronto.com
+        password: ${{ secrets.ftp_password_condohoteltoronto }}
+
+  web-deploy-condolikehotel:
+    name: 🎉 Deploy to CondoLikeHotel
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/master'
+    
+    steps:
+    - name: 🚚 Get latest code
+      uses: actions/checkout@v4
+      with:
+        ref: dev # Specify the branch name here
+    
+    - name: 📂 Sync files
+      uses: SamKirkland/FTP-Deploy-Action@v4.3.6
+      with:
+        server: ftp.condoinhotel.com
+        port: 21
+        username: github-actions@condolikehotel.com
+        password: ${{ secrets.ftp_password_condolikehotel }}
+
+  web-deploy-luxurycondorent:
+    name: 🎉 Deploy to LuxuryCondoRent
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/master'
+    
+    steps:
+    - name: 🚚 Get latest code
+      uses: actions/checkout@v4
+      with:
+        ref: dev # Specify the branch name here
+    
+    - name: 📂 Sync files
+      uses: SamKirkland/FTP-Deploy-Action@v4.3.6
+      with:
+        server: ftp.condoinhotel.com
+        port: 21
+        username: github-actions@luxurycondorent.com
+        password: ${{ secrets.ftp_password_luxurycondorent }}
