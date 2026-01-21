@@ -16,6 +16,7 @@ class ComposerStaticInit398c9d7878185b3b53c7dcef33ac9d67
         'e69f7f6ee287b969198c3c9d6777bd38' => __DIR__ . '/..' . '/symfony/polyfill-intl-normalizer/bootstrap.php',
         'b6b991a57620e2fb6b2f66f03fe9ddc2' => __DIR__ . '/..' . '/symfony/string/Resources/functions.php',
         '253c157292f75eb38082b5acb06f3f01' => __DIR__ . '/..' . '/nikic/fast-route/src/functions.php',
+        'b33e3d135e5d9e47d845c576147bda89' => __DIR__ . '/..' . '/php-di/php-di/src/functions.php',
     );
 
     public static $prefixLengthsPsr4 = array (
@@ -44,9 +45,17 @@ class ComposerStaticInit398c9d7878185b3b53c7dcef33ac9d67
             'Psr\\Container\\' => 14,
             'Psr\\Cache\\' => 10,
         ),
+        'L' =>
+        array (
+            'Laravel\\SerializableClosure\\' => 28,
+        ),
         'J' =>
         array (
             'Jean85\\' => 7,
+        ),
+        'I' =>
+        array (
+            'Invoker\\' => 8,
         ),
         'G' =>
         array (
@@ -58,6 +67,10 @@ class ComposerStaticInit398c9d7878185b3b53c7dcef33ac9d67
         array (
             'Fig\\Http\\Message\\' => 17,
             'FastRoute\\' => 10,
+        ),
+        'D' =>
+        array (
+            'DI\\' => 3,
         ),
         'C' =>
         array (
@@ -146,9 +159,17 @@ class ComposerStaticInit398c9d7878185b3b53c7dcef33ac9d67
         array (
             0 => __DIR__ . '/..' . '/psr/cache/src',
         ),
+        'Laravel\\SerializableClosure\\' =>
+        array (
+            0 => __DIR__ . '/..' . '/laravel/serializable-closure/src',
+        ),
         'Jean85\\' =>
         array (
             0 => __DIR__ . '/..' . '/jean85/pretty-package-versions/src',
+        ),
+        'Invoker\\' =>
+        array (
+            0 => __DIR__ . '/..' . '/php-di/invoker/src',
         ),
         'GuzzleHttp\\Psr7\\' =>
         array (
@@ -169,6 +190,10 @@ class ComposerStaticInit398c9d7878185b3b53c7dcef33ac9d67
         'FastRoute\\' =>
         array (
             0 => __DIR__ . '/..' . '/nikic/fast-route/src',
+        ),
+        'DI\\' =>
+        array (
+            0 => __DIR__ . '/..' . '/php-di/php-di/src',
         ),
         'Contentful\\RichText\\' =>
         array (

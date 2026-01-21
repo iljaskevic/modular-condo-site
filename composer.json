@@ -8,6 +8,7 @@
         "fig/http-message-util": "^1.1",
         "symfony/var-exporter": "^8.0",
         "symfony/string": "^7.4",
-        "symfony/service-contracts": "^3.6"
+        "symfony/service-contracts": "^3.6",
+        "php-di/php-di": "^7.1"
     }
 }
