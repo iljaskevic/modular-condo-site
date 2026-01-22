@@ -16,18 +16,20 @@ if(file_exists('config.php')) {
 $contentfulConfig = $config['contentful'];
 
 $client = new \Contentful\Delivery\Client($contentfulConfig['accessKey'], $contentfulConfig['spaceId']);
-$parsedown = new Parsedown();
+// $parsedown = new Parsedown();
+use League\CommonMark\CommonMarkConverter;
+$converter = new CommonMarkConverter();
 
 $siteId = $contentfulConfig['siteEntryId'];
 $entry = $client->getEntry($siteId);
 
-$headerImageOptions = new \Contentful\File\ImageOptions;
+$headerImageOptions = new \Contentful\Core\File\ImageOptions;
 $headerImageOptions->setFormat('jpg')->setHeight(1200);
 
-$imageOptions = new \Contentful\File\ImageOptions;
+$imageOptions = new \Contentful\Core\File\ImageOptions;
 $imageOptions->setFormat('jpg')->setHeight(1000);
 
-$thumbnailOptions = new \Contentful\File\ImageOptions;
+$thumbnailOptions = new \Contentful\Core\File\ImageOptions;
 $thumbnailOptions->setFormat('jpg')->setHeight(250);
 
 ?>
@@ -306,10 +308,10 @@ $thumbnailOptions->setFormat('jpg')->setHeight(250);
             <div>
               <h3><?php echo $entry->getDescriptionTitle(); ?></h3>
 
-              <?php echo $parsedown->text($entry->getDescriptionText());?>
+              <?php echo $converter->convertToHtml($entry->getDescriptionText());?>
 
               <div class="alert alert-warning" role="alert">
-                <?php echo $parsedown->text($entry->getDescriptionNote());?>
+                <?php echo $converter->convertToHtml($entry->getDescriptionNote());?>
               </div>
             </div>
           </div>
@@ -421,13 +423,13 @@ $thumbnailOptions->setFormat('jpg')->setHeight(250);
                         <div class="panel-heading" role="tab" id="heading-' . $faqIndex . '">
                           <h4 class="panel-title">
                             <a class="' . $faqCollapsedClass . '" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse-' . $faqIndex . '" aria-expanded="' . $faqExpanded . '" aria-controls="collapse-' . $faqIndex . '">'
-                              . $parsedown->text($faqItem->getQuestion()) .
+                              . $converter->convertToHtml($faqItem->getQuestion()) .
                             '</a>
                           </h4>
                         </div>
                         <div id="collapse-' . $faqIndex . '" class="panel-collapse collapse ' . $faqExpandedClass . '" role="tabpanel" aria-labelledby="heading-' . $faqIndex . '">
                           <div class="panel-body">'
-                            . $parsedown->text($faqItem->getAnswer()) .
+                            . $converter->convertToHtml($faqItem->getAnswer()) .
                           '</div>
                         </div>
                       </div>';

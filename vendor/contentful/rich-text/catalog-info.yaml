@@ -1,0 +1,14 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: rich-text.php 
+  description: This library is built to help you with the parsing and rendering of the rich text field type in Contentful for PHP. 
+  annotations:
+    github.com/project-slug: contentful/rich-text.php 
+    contentful.com/service-tier: "4"
+  tags:
+    - tier-4
+spec:
+  type: library
+  lifecycle: production
+  owner: group:team-developer-experience

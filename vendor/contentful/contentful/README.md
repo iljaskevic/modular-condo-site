@@ -1,103 +1,213 @@
-contentful.php
-===============
+![PHP](.github/header-php.png)
 
-[![Build Status](https://travis-ci.org/contentful/contentful.php.svg?branch=master)](https://travis-ci.org/contentful/contentful.php)
-[![codecov](https://codecov.io/gh/contentful/contentful.php/branch/master/graph/badge.svg)](https://codecov.io/gh/contentful/contentful.php)
 
-PHP SDK for [Contentful's][1] Content Delivery API.
+<p align="center">
+  <a href="https://www.contentful.com/slack/">
+    <img src="https://img.shields.io/badge/-Join%20Community%20Slack-2AB27B.svg?logo=slack&maxAge=31557600" alt="Join Contentful Community Slack" />
+  </a>
+  &nbsp;
+  <a href="https://www.contentfulcommunity.com/">
+    <img src="https://img.shields.io/badge/-Join%20Community%20Forum-3AB2E6.svg?logo=data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MiA1OSI+CiAgPHBhdGggZmlsbD0iI0Y4RTQxOCIgZD0iTTE4IDQxYTE2IDE2IDAgMCAxIDAtMjMgNiA2IDAgMCAwLTktOSAyOSAyOSAwIDAgMCAwIDQxIDYgNiAwIDEgMCA5LTkiIG1hc2s9InVybCgjYikiLz4KICA8cGF0aCBmaWxsPSIjNTZBRUQyIiBkPSJNMTggMThhMTYgMTYgMCAwIDEgMjMgMCA2IDYgMCAxIDAgOS05QTI5IDI5IDAgMCAwIDkgOWE2IDYgMCAwIDAgOSA5Ii8+CiAgPHBhdGggZmlsbD0iI0UwNTM0RSIgZD0iTTQxIDQxYTE2IDE2IDAgMCAxLTIzIDAgNiA2IDAgMSAwLTkgOSAyOSAyOSAwIDAgMCA0MSAwIDYgNiAwIDAgMC05LTkiLz4KICA8cGF0aCBmaWxsPSIjMUQ3OEE0IiBkPSJNMTggMThhNiA2IDAgMSAxLTktOSA2IDYgMCAwIDEgOSA5Ii8+CiAgPHBhdGggZmlsbD0iI0JFNDMzQiIgZD0iTTE4IDUwYTYgNiAwIDEgMS05LTkgNiA2IDAgMCAxIDkgOSIvPgo8L3N2Zz4K&maxAge=31557600" alt="Join Contentful Community Forum" />
+  </a>
+</p>
 
-[Contentful][1] is a content management platform for web applications, mobile apps and connected devices. It allows you to create, edit & manage content in the cloud and publish it anywhere via powerful API. Contentful offers tools for managing editorial teams and enabling cooperation between organizations.
+# contentful.php — Contentful PHP Delivery Library
 
-The SDK requires at least PHP 5.5.9. PHP 7 is supported.
 
-Setup
-=====
+[![Packagist](https://img.shields.io/packagist/v/contentful/contentful.svg?style=for-the-badge)](https://packagist.org/packages/contentful/contentful)
+[![PHP version](https://img.shields.io/packagist/php-v/contentful/contentful.svg?style=for-the-badge)](https://packagist.org/packages/contentful/contentful)
+[![Packagist](https://img.shields.io/github/license/contentful/contentful.php.svg?style=for-the-badge)](https://packagist.org/packages/contentful/contentful)
+[![CircleCI](https://circleci.com/gh/contentful/contentful.php.svg?style=shield)](https://circleci.com/gh/contentful/contentful.php)
 
-To add this package to your `composer.json` and install it execute the following command:
 
-```bash
-php composer.phar require contentful/contentful
-````
+> PHP library for the Contentful [Content Delivery API](https://www.contentful.com/developers/docs/references/content-delivery-api/) and [Content Preview API](https://www.contentful.com/developers/docs/references/content-preview-api/). It helps you to easily access your Content stored in Contentful with your PHP applications.
 
-Then, if not already done, include the Composer autoloader:
+## What is Contentful?
 
-```php
-require_once 'vendor/autoload.php';
+[Contentful](https://www.contentful.com/) provides content infrastructure for digital teams to power websites, apps, and devices. Unlike a CMS, Contentful was built to integrate with the modern software stack. It offers a central hub for structured content, powerful management and delivery APIs, and a customizable web app that enable developers and content creators to ship their products faster.
+
+<details>
+<summary>Table of contents</summary>
+
+- [contentful.php — Contentful PHP Delivery library](#contentfulphp-contentful-php-delivery-library)
+  - [What is Contentful?](#what-is-contentful)
+  - [Core Features](#core-features)
+  - [Getting started](#getting-started)
+  - [Installation](#installation)
+  - [Your first request](#your-first-request)
+  - [Using this library with the Preview API](#using-this-library-with-the-preview-api)
+  - [Authentication](#authentication)
+  - [Documentation & References](#documentation-references)
+  - [Configuration](#configuration)
+  - [Reference documentation](#reference-documentation)
+  - [Tutorials & other resources](#tutorials-other-resources)
+  - [Upgrade](#upgrade)
+  - [Reach out to us](#reach-out-to-us)
+  - [You have questions about how to use this library?](#you-have-questions-about-how-to-use-this-library)
+  - [You found a bug or want to propose a feature?](#you-found-a-bug-or-want-to-propose-a-feature)
+  - [You need to share confidential information or have other questions?](#you-need-to-share-confidential-information-or-have-other-questions)
+  - [Get involved](#get-involved)
+  - [License](#license)
+  - [Code of Conduct](#code-of-conduct)
+
+</details>
+
+## Core Features
+
+- Content retrieval through the [Content Delivery API](https://www.contentful.com/developers/docs/references/content-delivery-api/) and [Content Preview API](https://www.contentful.com/developers/docs/references/content-preview-api/).
+- [Synchronization](https://www.contentful.com/developers/docs/concepts/sync/)
+- [Localization support](https://www.contentful.com/developers/docs/concepts/locales/)
+- [Link resolution](https://www.contentful.com/developers/docs/concepts/links/)
+
+## Getting started
+
+In order to get started with the Contentful PHP library you'll need not only to install it, but also to get credentials which will allow you to have access to your content in Contentful. This package requires PHP 7.2 or higher or PHP 8.0 or higher.
+
+### Installation
+
+Install the library using [Composer](https://getcomposer.org/):
+
+``` bash
+composer require contentful/contentful
 ```
 
-Usage
-=====
+### Your first request
 
-All interactions with the SDK go trough `Contentful\Delivery\Client`. To create a new client an access token and a space ID have to be passed to the constructor.
+The following code snippet is the most basic one you can use to get some content from Contentful with this library:
+All interactions with the library go through `Contentful\Delivery\Client`. To create a new client an access token and a space ID have to be passed to the constructor.
 
-```php
-$client = new \Contentful\Delivery\Client('access-token', 'space-id');
+``` php
+$client = new \Contentful\Delivery\Client(
+    'b4c0n73n7fu1', # This is the access token for this space. Normally you get both ID and the token in the Contentful web app
+    'cfexampleapi' # This is the space ID. A space is like a project folder in Contentful terms
+);
+
+try {
+    $entry = $client->getEntry('nyancat');
+} catch (\Contentful\Core\Exception\NotFoundException $exception) {
+    // Entry does not exist
+}
 ```
 
-To fetch an Entry just call the method `getEntry()` with the ID of the desired entry.
+### Using this library with the Preview API
 
-```php
-$entry = $client->getEntry('entry-id');
+This library can also be used with the Preview API. In order to do so, you need to use the Preview API access token, available on the same page where you get the Delivery API token, and tell the client to use the different API:
+
+``` php
+$options = \Contentful\Delivery\ClientOptions::create()
+    ->usingPreviewApi();
+$client = new \Contentful\Delivery\Client($accessToken, $spaceId, $environmentId, $options);
 ```
 
-The fields of an entry can than be accessed through getter methods.
+You can find all available methods of our client in our [reference documentation](https://contentful.github.io/contentful.php).
 
-```php
-$entry->getId(); // 'entry-id'
+### Authentication
+
+To get your own content from Contentful, an app should authenticate with an OAuth bearer token.
+
+You can create API keys using the [Contentful web interface](https://app.contentful.com/). Go to the app, open the space that you want to access (top left corner lists all the spaces), and navigate to the APIs area. Open the API Keys section and create your first token. Done.
+
+Don't forget to also get your Space ID.
+
+For more information, check the [Contentful REST API reference on Authentication](https://www.contentful.com/developers/docs/references/authentication/).
+
+## Documentation & References
+
+- [Configuration](#configuration)
+- [Reference documentation](#reference-documentation)
+- [Tutorials & other resources](#tutorials--other-resources)
+- [Troubleshooting](#troubleshooting)
+- [Advanced Concepts](#advanced-concepts)
+
+### Configuration
+
+The `ClientOptions` class allows you to configure the client in a variety of different ways:
+
+``` php
+$options = \Contentful\Delivery\ClientOptions::create()
+    ->usingPreviewApi()
+    ->withDefaultLocale(string $defaultLocale = null)
+    ->withHost(string $host)
+    ->withLogger(Psr\Log\LoggerInterface $logger)
+    ->withCache(Psr\Cache\CacheItemPoolInterface $cache, bool $autoWarmup = false, bool $cacheContent = false)
+    ->withHttpClient(GuzzleHttp\Client $client)
+    ->withoutMessageLogging()
+    ->withQueryCache(Psr\Cache\CacheItemPoolInterface $queryCacheItemPool, int $queryCacheLifetime = 0)
+;
+
+$client = new \Contentful\Delivery\Client(
+    string $accessToken,
+    string $spaceId,
+    string $environmentId = 'master',
+    ClientOptions $options = null
+);
 ```
 
-More than one Entry can be fetched by calling `getEntries()`. This methods requires a `Contentful\Delivery\Query` object, which allows filtering and sorting results.
+| Client parameter | Default    | Description |
+| ---------------- | ---------- | ----------- |
+| `$accessToken`   |            | **Required**. Your access token |
+| `$spaceId`       |            | **Required**. Your space ID |
+| `$environmentId` | `'master'` | Your environment ID |
+| `$options`       | `null`     | A `ClientOptions` object |
 
-```php
-$query = new \Contentful\Delivery\Query;
-$query->where('sys.updatedAt', new \DateTime('2013-01-01'));
-$entries = $client->getEntries($query);
-```
+| ClientOptions method | Parameters | Description |
+| -------------------- | ---------- | ----------- |
+| `usingPreviewApi()` | - | Use the Preview API host (`preview.contentful.com`) |
+| `withDefaultLocale()` | `string $locale` | Set a locale to be automatically used for all requests |
+| `withHost()` | `string $host` | A string to override the default Contentful API URL, useful if you have a proxy between your application and the Contentful API |
+| `withLogger()` | `Psr\Log\LoggerInterface $logger` | A PSR-3 logger. Two types of logs are written: a generic one using either the `INFO` or `ERROR` level (depending on the response status code) with a brief summary, and a complete dump of request and response using the `DEBUG` level. We suggest to configure the logger minimum level according to your needs. |
+| `withCache()` | `Psr\Cache\CacheItemPoolInterface $cache` | A PSR-6 cache item pool. This will be used to stored data such as content types and locales, which are always needed but don't change often |
+| `withCache()` | `bool $autoWarmup = false` | When using a cache pool, set this to true to automatically fill the cache during regular use |
+| `withCache()` | `bool $cacheContent = false` | When using a cache pool with `$autoWarmup` set to true, se this to true to fill the cache with entries and assets during runtime. This may speed up execution when calling `$client->getEntry($entryId)` and `$client->getAsset($assetId)`, but *not* when calling the `getEntries()` and `getAssets()` methods, as the client can't reliably know which entries or assets will be returned by the API, and for this reason the cache can't intercept the call. |
+| `withHttpClient()` | `GuzzleHttp\Client $client` | A Guzzle client instance, which can be configured with custom middleware |
+| `withoutMessageLogging()` | - | Do not store API requests and responses (which can use a lot of memory). If messages are not stored, they will not be retrievable from `Client::getMessages()` for debugging and inspection purposes |
+| `withQueryCache()` | `Psr\Cache\CacheItemPoolInterface $queryCacheItemPool` | A PSR-6 cache item pool. This will be used to cache items retrieved with queries when calling `$client->getEntries($query)`. |
+| `withQueryCache()` | `int $queryCacheLifetime = 0` | The number of seconds of lifetime for `$client->getEntries($query)` cache items. There's no invalidation mechanism on these cache items so consider to set a low lifetime (for example 60 seconds). |
 
-### Default Ordering
+### Reference documentation
 
-Bear in mind that there is no default ordering included for any method which returns a `Contentful\ResourceArray` instance. This means that if you plan to page through more than 100 results with multiple requests, there is no guarantee that you will cover all entries. It is however possible to specify custom ordering:
+The [PHP library reference](https://contentful.github.io/contentful.php) documents what objects and methods are exposed by this library, what arguments they expect and what kind of data is returned.
 
-```php
-$query = new \Contentful\Delivery\Query;
-$query->orderBy('sys.createdAt', true);
-$entries = $client->getEntries($query);
-```
+Most methods also have examples which show you how to use them.
 
-The above snippet will fetch all Entries, ordered by newest-to-oldest.
+### Tutorials & other resources
 
-### Preview Mode
+* This library is a wrapper around our Contentful Delivery REST API. Some more specific details such as search parameters and pagination are better explained on the [REST API reference](https://www.contentful.com/developers/docs/references/content-delivery-api/), and you can also get a better understanding of how the requests look under the hood.
+* Check the [Contentful for PHP](https://www.contentful.com/developers/docs/php/) page for Tutorials, Demo Apps, and more information on using PHP with Contentful.
 
-The Content Delivery API only returns published Entries. However, you might want to preview content in your app before making it public for your users. For this, you can use the preview mode, which will return **all** Entries, regardless of their published status. To do so, just pass `true` as the third argument to the `Client` constructor.
+### Upgrade
 
-```php
-$client = new \Contentful\Delivery\Client('access-token', 'space-id', true);
-```
+For details about how to upgrade from version 3.x to version 4, please check the [changelog entry for version 4.0.0](CHANGELOG.md#400-2018-11-08) and the [upgrade to version 4 guide](UPGRADE-4.0.md).
 
-Apart from the configuration option, you can use the SDK without modifications with one exception: you need to obtain a preview access token, which you can get in the "API" tab of the Contentful app. In preview mode, data can be invalid, because no validation is performed on unpublished entries. Your app needs to deal with that. Be aware that the access token is read-write and should in no case be shipped with a production app.
+For details about how to upgrade from version 2.x to version 3, please check the [changelog entry for version 3.0.0](CHANGELOG.md#300-2018-04-16) and the [upgrade to version 3 guide](UPGRADE-3.0.md).
 
-### Default Locale
+## Reach out to us
 
-When working with localized content it can be tedious to specify the locale on every request. Alternatively, a locale can be specified on the client constructor. This value then overrides the space's default locale. To retrieve all content in German, the code would look like this:
+### You have questions about how to use this library?
 
-```php
-$client = new \Contentful\Delivery\Client('access-token', 'space-id', false, 'de-DE');
-```
+* Reach out to our community forum: [![Contentful Community Forum](https://img.shields.io/badge/-Join%20Community%20Forum-3AB2E6.svg?logo=data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MiA1OSI+CiAgPHBhdGggZmlsbD0iI0Y4RTQxOCIgZD0iTTE4IDQxYTE2IDE2IDAgMCAxIDAtMjMgNiA2IDAgMCAwLTktOSAyOSAyOSAwIDAgMCAwIDQxIDYgNiAwIDEgMCA5LTkiIG1hc2s9InVybCgjYikiLz4KICA8cGF0aCBmaWxsPSIjNTZBRUQyIiBkPSJNMTggMThhMTYgMTYgMCAwIDEgMjMgMCA2IDYgMCAxIDAgOS05QTI5IDI5IDAgMCAwIDkgOWE2IDYgMCAwIDAgOSA5Ii8+CiAgPHBhdGggZmlsbD0iI0UwNTM0RSIgZD0iTTQxIDQxYTE2IDE2IDAgMCAxLTIzIDAgNiA2IDAgMSAwLTkgOSAyOSAyOSAwIDAgMCA0MSAwIDYgNiAwIDAgMC05LTkiLz4KICA8cGF0aCBmaWxsPSIjMUQ3OEE0IiBkPSJNMTggMThhNiA2IDAgMSAxLTktOSA2IDYgMCAwIDEgOSA5Ii8+CiAgPHBhdGggZmlsbD0iI0JFNDMzQiIgZD0iTTE4IDUwYTYgNiAwIDEgMS05LTkgNiA2IDAgMCAxIDkgOSIvPgo8L3N2Zz4K&maxAge=31557600)](https://support.contentful.com/)
+* Jump into our community slack channel: [![Contentful Community Slack](https://img.shields.io/badge/-Join%20Community%20Slack-2AB27B.svg?logo=slack&maxAge=31557600)](https://www.contentful.com/slack/)
 
-Documentation
-=============
+### You found a bug or want to propose a feature?
 
-* [SDK API Reference][3]
-* Check the [Contentful for PHP][4] page for tutorials, example apps, and more information on other ways of using PHP with Contentful
-* [CDA REST API reference][5] for additional details on the Delivery API
+* File an issue here on GitHub: [![File an issue](https://img.shields.io/badge/-Create%20Issue-6cc644.svg?logo=github&maxAge=31557600)](https://github.com/contentful/contentful.php/issues/new). Make sure to remove any credential from your code before sharing it.
 
-License
-=======
+### You need to share confidential information or have other questions?
 
-Copyright (c) 2015-2017 Contentful GmbH. Code released under the MIT license. See [LICENSE][2] for further details.
+* File a support ticket at our Contentful Customer Support: [![File support ticket](https://img.shields.io/badge/-Submit%20Support%20Ticket-3AB2E6.svg?logo=data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MiA1OSI+CiAgPHBhdGggZmlsbD0iI0Y4RTQxOCIgZD0iTTE4IDQxYTE2IDE2IDAgMCAxIDAtMjMgNiA2IDAgMCAwLTktOSAyOSAyOSAwIDAgMCAwIDQxIDYgNiAwIDEgMCA5LTkiIG1hc2s9InVybCgjYikiLz4KICA8cGF0aCBmaWxsPSIjNTZBRUQyIiBkPSJNMTggMThhMTYgMTYgMCAwIDEgMjMgMCA2IDYgMCAxIDAgOS05QTI5IDI5IDAgMCAwIDkgOWE2IDYgMCAwIDAgOSA5Ii8+CiAgPHBhdGggZmlsbD0iI0UwNTM0RSIgZD0iTTQxIDQxYTE2IDE2IDAgMCAxLTIzIDAgNiA2IDAgMSAwLTkgOSAyOSAyOSAwIDAgMCA0MSAwIDYgNiAwIDAgMC05LTkiLz4KICA8cGF0aCBmaWxsPSIjMUQ3OEE0IiBkPSJNMTggMThhNiA2IDAgMSAxLTktOSA2IDYgMCAwIDEgOSA5Ii8+CiAgPHBhdGggZmlsbD0iI0JFNDMzQiIgZD0iTTE4IDUwYTYgNiAwIDEgMS05LTkgNiA2IDAgMCAxIDkgOSIvPgo8L3N2Zz4K&maxAge=31557600)](https://www.contentful.com/support/)
 
- [1]: https://www.contentful.com
- [2]: LICENSE
- [3]: https://contentful.github.io/contentful.php/api/
- [4]: https://www.contentful.com/developers/docs/php/
- [5]: https://www.contentful.com/developers/docs/references/content-delivery-api/
+## Get involved
+
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?maxAge=31557600)](http://makeapullrequest.com)
+
+**Important**: Right now, the API has `php-vcr` as a development dependency, which does not officially support PHP8 yet. If you want to develop on PHP8, you will need to install the dependencies with `composer install --ignore-platform-reqs` to overwrite this requirement.
+
+## License
+
+This repository is published under the [MIT](LICENSE) license.
+
+## Code of Conduct
+
+We want to provide a safe, inclusive, welcoming, and harassment-free space and experience for all participants, regardless of gender identity and expression, sexual orientation, disability, physical appearance, socioeconomic status, body size, ethnicity, nationality, level of experience, age, religion (or lack thereof), or other identity markers.
+
+[Read our full Code of Conduct](https://github.com/contentful-developer-relations/community-code-of-conduct).

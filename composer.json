@@ -1,7 +1,16 @@
 {
     "require": {
-        "contentful/contentful": "^2.3",
-        "slim/slim": "^3.9",
-        "erusev/parsedown": "^1.6"
+        "contentful/contentful": "^7.1",
+        "slim/slim": "^4.15",
+        "slim/psr7": "^1.8",
+        "symfony/cache": "*",
+        "fig/http-message-util": "^1.1",
+        "symfony/var-exporter": "^8.0",
+        "symfony/string": "^7.4",
+        "symfony/service-contracts": "^3.6",
+        "php-di/php-di": "^7.1",
+        "symfony/deprecation-contracts": "^3.6",
+        "symfony/cache-contracts": "*",
+        "league/commonmark": "^2.8"
     }
 }
