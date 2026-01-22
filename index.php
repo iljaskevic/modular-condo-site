@@ -55,7 +55,7 @@ $thumbnailOptions->setFormat('jpg')->setHeight(250);
     <script src="https://www.google.com/recaptcha/api.js" async defer></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.0.7/js/swiper.min.js" async defer></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <script src="https://oformsapi.azurewebsites.net/js/v1/oforms.js"></script>
+    <script src="https://oformsapiapp.azurewebsites.net/js/v1/oforms.js"></script>
 
     <!-- Daterangepicker Include Required Prerequisites -->
     <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
