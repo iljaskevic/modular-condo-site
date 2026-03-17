@@ -56,6 +56,7 @@ if (isset($_SERVER['HTTP_WEBHOOK_AUTH_TOKEN'])) {
 
 if ($authToken == $contentfulConfig['webhookAuthToken']) {
   echo "auth token matches";
+  echo 'Clearing folder: ' . __DIR__ . '/cache/app.cache';
 } else {
   echo "bad token";
 }
