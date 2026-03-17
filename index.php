@@ -16,11 +16,6 @@ if(file_exists('config.php')) {
 }
 $contentfulConfig = $config['contentful'];
 
-// $path = \sprintf('%s/cache/%s/', __DIR__, $contentfulConfig['spaceId']);
-// $filesystem = new Filesystem(new Local($path));
-
-// $cacheItemPool = new FilesystemCachePool($filesystem);
-
 $cacheItemPool = new Symfony\Component\Cache\Adapter\FilesystemAdapter(
     // a subdirectory for the cache items
     'app.cache',

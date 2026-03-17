@@ -48,16 +48,12 @@ if (isset($_SERVER['HTTP_WEBHOOK_AUTH_TOKEN'])) {
     $authToken = "NOT_SET";
 }
 
-// echo '********* token from header: ' . $authToken;
-// echo '<br>';
-
-
-// echo '********* token from config: ' . $contentfulConfig['webhookAuthToken'];
-
 if ($authToken == $contentfulConfig['webhookAuthToken']) {
+
   $dir = __DIR__ . '/cache/app.cache';
   deleteDirectory($dir);
   echo 'Deleted cache folder: ' . $dir;
+
 } else {
   echo "Failed to clear cache - token mismatch";
 }
