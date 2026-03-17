@@ -15,7 +15,7 @@ if(file_exists('config.php')) {
 }
 $contentfulConfig = $config['contentful'];
 
-$path = \sprintf('%s/cache/%s-%s-%s/', __DIR__, $api, $spaceId, $environmentId);
+$path = \sprintf('%s/cache/%s/', __DIR__, $contentfulConfig['spaceId']);
 $filesystem = new Filesystem(new Local($path));
 
 $cacheItemPool = new FilesystemCachePool($filesystem);
