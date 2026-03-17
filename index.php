@@ -20,7 +20,7 @@ $contentfulConfig = $config['contentful'];
 
 // $cacheItemPool = new FilesystemCachePool($filesystem);
 
-$cacheItemPool = new FilesystemAdapter(
+$cacheItemPool = new Symfony\Component\Cache\Adapter\FilesystemAdapter(
     // a subdirectory for the cache items
     'app.cache',
     // default lifetime in seconds (0 means indefinitely)
