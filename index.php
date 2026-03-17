@@ -29,7 +29,7 @@ $cacheItemPool = new Symfony\Component\Cache\Adapter\FilesystemAdapter(
     __DIR__ . '/cache'
 );
 
-$options = ClientOptions::create()
+$options = Contentful\Delivery\ClientOptions::create()
     ->withCache($cacheItemPool, true, true);
 
 $client = new \Contentful\Delivery\Client($contentfulConfig['accessKey'], $contentfulConfig['spaceId'], 'master', $options);
