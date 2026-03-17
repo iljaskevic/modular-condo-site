@@ -48,8 +48,16 @@ if (isset($_SERVER['HTTP_WEBHOOK_AUTH_TOKEN'])) {
     $authToken = "NOT_SET";
 }
 
-echo '********* token from header: ' . $authToken;
-echo '<br>';
-echo '********* token from config: ' . $contentfulConfig['webhookAuthToken'];
+// echo '********* token from header: ' . $authToken;
+// echo '<br>';
+
+
+// echo '********* token from config: ' . $contentfulConfig['webhookAuthToken'];
+
+if ($authToken == $contentfulConfig['webhookAuthToken']) {
+  echo "auth token matches";
+} else {
+  echo "bad token";
+}
 
 ?>
