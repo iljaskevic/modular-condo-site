@@ -15,10 +15,19 @@ if(file_exists('config.php')) {
 }
 $contentfulConfig = $config['contentful'];
 
-$path = \sprintf('%s/cache/%s/', __DIR__, $contentfulConfig['spaceId']);
-$filesystem = new Filesystem(new Local($path));
+// $path = \sprintf('%s/cache/%s/', __DIR__, $contentfulConfig['spaceId']);
+// $filesystem = new Filesystem(new Local($path));
 
-$cacheItemPool = new FilesystemCachePool($filesystem);
+// $cacheItemPool = new FilesystemCachePool($filesystem);
+
+$cacheItemPool = new FilesystemAdapter(
+    // a subdirectory for the cache items
+    'app.cache',
+    // default lifetime in seconds (0 means indefinitely)
+    0,
+    // a specific directory path (optional, system temp is used by default)
+    __DIR__ . '/cache'
+);
 
 $options = ClientOptions::create()
     ->withCache($cacheItemPool, true, true);
