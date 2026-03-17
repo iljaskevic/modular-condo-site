@@ -8,7 +8,8 @@ if(file_exists('config.php')) {
       'accessKey' => getenv("CONTENTFUL_ACCESS_KEY"),
       'spaceId' => getenv("CONTENTFUL_SPACE_ID"),
       'siteEntryId' => getenv("CONTENTFUL_SITE_ENTRY_ID"),
-      'userPageEntryId' => getenv("CONTENTFUL_USER_PAGE_ENTRY_ID")
+      'userPageEntryId' => getenv("CONTENTFUL_USER_PAGE_ENTRY_ID"),
+      'webhookAuthToken' => getenv("CONTENTFUL_WEBHOOK_AUTH_TOKEN")
     ],
     'oFormsApiKey' => getenv("OFORMS_API_KEY"),
   ];
