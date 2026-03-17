@@ -56,9 +56,11 @@ if (isset($_SERVER['HTTP_WEBHOOK_AUTH_TOKEN'])) {
 
 if ($authToken == $contentfulConfig['webhookAuthToken']) {
   echo "auth token matches";
-  echo 'Clearing folder: ' . __DIR__ . '/cache/app.cache';
+  $dir = __DIR__ . '/cache/app.cache';
+  deleteDirectory($dir);
+  echo 'Deleted cache folder: ' . $dir;
 } else {
-  echo "bad token";
+  echo "Failed to clear cache - token mismatch";
 }
 
 ?>
