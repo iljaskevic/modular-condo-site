@@ -56,6 +56,8 @@ if ($authToken == $contentfulConfig['webhookAuthToken']) {
 
 } else {
   echo "Failed to clear cache - token mismatch";
+  http_response_code(403);
+  exit();
 }
 
 ?>
