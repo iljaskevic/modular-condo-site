@@ -43,6 +43,11 @@ function deleteDirectory($dir) {
 // Clearing cache by deleting folder only if header is set correctly
 
 $authToken = $_SERVER['HTTP_WEBHOOK_AUTH_TOKEN'];
+if (empty($authToken)) {
+    // Code to run if the variable is empty
+    $authToken = "NOT_SET";
+}
+
 echo '********* token from header: ' . $authToken;
 echo '<br>';
 echo '********* token from config: ' . $contentfulConfig['webhookAuthToken'];
