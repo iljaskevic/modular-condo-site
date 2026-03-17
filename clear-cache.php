@@ -55,7 +55,6 @@ if (isset($_SERVER['HTTP_WEBHOOK_AUTH_TOKEN'])) {
 // echo '********* token from config: ' . $contentfulConfig['webhookAuthToken'];
 
 if ($authToken == $contentfulConfig['webhookAuthToken']) {
-  echo "auth token matches";
   $dir = __DIR__ . '/cache/app.cache';
   deleteDirectory($dir);
   echo 'Deleted cache folder: ' . $dir;
