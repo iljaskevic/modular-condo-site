@@ -4,7 +4,8 @@ return [
     'accessKey' => '',
     'spaceId' => '',
     'siteEntryId' => '',
-    'userPageEntryId' => ''
+    'userPageEntryId' => '',
+    'webhookAuthToken' => ''
   ],
   'oFormsApiKey' => '',
 ];

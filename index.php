@@ -8,14 +8,28 @@ if(file_exists('config.php')) {
       'accessKey' => getenv("CONTENTFUL_ACCESS_KEY"),
       'spaceId' => getenv("CONTENTFUL_SPACE_ID"),
       'siteEntryId' => getenv("CONTENTFUL_SITE_ENTRY_ID"),
-      'userPageEntryId' => getenv("CONTENTFUL_USER_PAGE_ENTRY_ID")
+      'userPageEntryId' => getenv("CONTENTFUL_USER_PAGE_ENTRY_ID"),
+      'webhookAuthToken' => getenv("CONTENTFUL_WEBHOOK_AUTH_TOKEN")
     ],
     'oFormsApiKey' => getenv("OFORMS_API_KEY"),
   ];
 }
 $contentfulConfig = $config['contentful'];
 
-$client = new \Contentful\Delivery\Client($contentfulConfig['accessKey'], $contentfulConfig['spaceId']);
+$cacheItemPool = new Symfony\Component\Cache\Adapter\FilesystemAdapter(
+    // a subdirectory for the cache items
+    'app.cache',
+    // default lifetime in seconds (0 means indefinitely)
+    0,
+    // a specific directory path (optional, system temp is used by default)
+    __DIR__ . '/cache'
+);
+
+$options = Contentful\Delivery\ClientOptions::create()
+    ->withCache($cacheItemPool, true, true);
+
+$client = new \Contentful\Delivery\Client($contentfulConfig['accessKey'], $contentfulConfig['spaceId'], 'master', $options);
+
 // $parsedown = new Parsedown();
 use League\CommonMark\CommonMarkConverter;
 $converter = new CommonMarkConverter();

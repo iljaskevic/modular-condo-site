@@ -3,7 +3,7 @@
         "contentful/contentful": "^7.1",
         "slim/slim": "^4.15",
         "slim/psr7": "^1.8",
-        "symfony/cache": "*",
+        "symfony/cache": "^7.4",
         "fig/http-message-util": "^1.1",
         "symfony/var-exporter": "^8.0",
         "symfony/string": "^7.4",
