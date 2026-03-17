@@ -15,7 +15,16 @@ if(file_exists('config.php')) {
 }
 $contentfulConfig = $config['contentful'];
 
-$client = new \Contentful\Delivery\Client($contentfulConfig['accessKey'], $contentfulConfig['spaceId']);
+$path = \sprintf('%s/cache/%s-%s-%s/', __DIR__, $api, $spaceId, $environmentId);
+$filesystem = new Filesystem(new Local($path));
+
+$cacheItemPool = new FilesystemCachePool($filesystem);
+
+$options = ClientOptions::create()
+    ->withCache($cacheItemPool, true, true);
+
+$client = new \Contentful\Delivery\Client($contentfulConfig['accessKey'], $contentfulConfig['spaceId'], 'master', $options);
+
 // $parsedown = new Parsedown();
 use League\CommonMark\CommonMarkConverter;
 $converter = new CommonMarkConverter();
