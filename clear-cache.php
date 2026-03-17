@@ -55,8 +55,8 @@ if ($authToken == $contentfulConfig['webhookAuthToken']) {
   echo 'Deleted cache folder: ' . $dir;
 
 } else {
-  echo "Failed to clear cache - token mismatch";
   http_response_code(403);
+  echo "Failed to clear cache - token mismatch";
   exit();
 }
 
